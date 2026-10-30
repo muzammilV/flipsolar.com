@@ -1,3 +1,21 @@
+# Pre-launch checklist (do these before pointing DNS / announcing)
+
+1. **Fill the legal pages** (privacy / terms / contact contain `{{TOKENS}}` until you do):
+   ```
+   python3 scripts/fill_legal.py --legal-name "Your LLC" --state Texas \
+       --address "Street, City, ST ZIP" --email you@flipsolar.com --date "Month D, 2026"
+   ```
+2. **Run the checker** — it must report 0 failures: `python3 scripts/preflight.py`
+   (checks placeholders, broken links/anchors, sitemap, OG images, stale claims, Amazon tags).
+3. **Tally settings** (not in this repo): set *After submission → Redirect* to `https://flipsolar.com/thank-you.html`;
+   add a required consent checkbox mirroring the Privacy/Terms text; if installers will **text** leads,
+   add TCPA-style SMS consent wording (and get legal review) and update privacy.html.
+4. **Submit a real test lead** from phone and desktop and confirm it arrives where installers' leads should go.
+5. **Have a lawyer review** privacy.html, terms.html and the tax/incentive wording.
+6. Re-verify time-sensitive claims (federal ITC deadlines, Florida incentives) before each content refresh.
+
+---
+
 # FlipSolar.com — GitHub Pages Site
 
 Solar lead gen + affiliate site targeting small business owners in Texas & Florida.
@@ -14,8 +32,8 @@ flipsolar/
 │   └── style.css                          ← All styling
 └── blog/
     ├── solar-panels-restaurants-texas.html ← Article 1 (done)
-    ├── solar-pool-heater-florida-2025.html ← Article 2 (create next)
-    └── solar-savings-small-business.html  ← Article 3 (create next)
+    ├── solar-pool-heater-florida-2026.html ← Article 2 (done)
+    └── solar-savings-small-business.html  ← Article 3 (done)
 ```
 
 ## 🚀 Deploy to GitHub Pages
@@ -46,9 +64,8 @@ www CNAME yourusername.github.io
 - Replace `<div class="tally-embed-placeholder">` blocks in both HTML files
 
 ### 2. Amazon Affiliate Links
-- Sign up at affiliate-program.amazon.com
-- Get your affiliate tag (format: yourname-20)
-- Replace `YOUR_AFFILIATE_TAG` in index.html and the blog article
+- Affiliate tag in use: `flipsolar-20`. Click every Amazon link and confirm each ASIN matches the product named next to it (B0B8ZLZ53M is labeled differently on the homepage and the restaurant guide).
+- Do not hard-code prices (Amazon Associates policy); the site links to Amazon for current price.
 - Verify the ASINs are current:
   - EcoFlow DELTA Pro: B09STZTLGN
   - Jackery SolarSaga 200W: B09SJMGHL4

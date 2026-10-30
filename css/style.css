@@ -869,11 +869,45 @@ footer ul li a:hover { color: var(--sun); }
   .products-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; gap: 32px; }
-  .article-layout { grid-template-columns: 1fr; }
+  .article-layout { grid-template-columns: minmax(0, 1fr); }
   .nav-links { display: none; }
 }
 
 @media (max-width: 600px) {
   .biz-grid { grid-template-columns: 1fr; }
   .hero-stats { flex-wrap: wrap; gap: 20px; }
+}
+
+/* ── Added pre-launch: footnotes, form fallback/consent, footer legal, legal pages ── */
+.hero-footnote { font-size: 12px; line-height: 1.5; color: rgba(255,255,255,0.6); margin-top: 18px; max-width: 520px; }
+.hero-footnote a { color: inherit; text-decoration: underline; }
+.biz-footnote { font-size: 13px; color: var(--grey-500); text-align: center; margin: 24px auto 0; max-width: 720px; }
+.form-fallback, .form-consent { font-size: 12.5px; line-height: 1.5; color: var(--grey-500); text-align: center; margin: 10px 0 0; }
+.form-consent { margin-bottom: 4px; }
+.form-fallback a, .form-consent a { color: inherit; text-decoration: underline; }
+.footer-bottom { flex-wrap: wrap; gap: 10px 24px; }
+.footer-bottom a { color: rgba(255,255,255,0.75); text-decoration: underline; }
+.footer-bottom a:hover { color: var(--sun); }
+footer ul li { font-size: 14px; line-height: 1.5; }
+footer ul li strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+.legal-hero { background: linear-gradient(160deg, var(--sky) 0%, var(--sky-mid) 100%); color: #fff; padding: 56px 5% 40px; }
+.legal-hero h1 { font-family: 'Sora', sans-serif; font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; }
+.legal-hero p { margin: 0; color: rgba(255,255,255,0.7); font-size: 14px; }
+.legal-body { max-width: 780px; margin: 0 auto; padding: 40px 5% 72px; line-height: 1.75; color: var(--sky); }
+.legal-body h2 { font-family: 'Sora', sans-serif; font-size: 20px; margin: 36px 0 10px; }
+.legal-body p, .legal-body li { font-size: 16px; }
+.legal-body ul { padding-left: 22px; }
+.legal-body a { color: var(--sun-deep); }
+.thanks-steps { counter-reset: s; list-style: none; padding: 0; }
+.thanks-steps li { counter-increment: s; position: relative; padding: 4px 0 18px 52px; }
+.thanks-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--sun); color: var(--sky); font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+
+/* Guides: let grid children shrink; keep calculator readable on narrow phones */
+.article-body { min-width: 0; overflow-wrap: break-word; }
+@media (max-width: 480px) {
+  .calc-results { grid-template-columns: 1fr; }
+  .article-body .calc-box { padding: 24px 18px; }
 }
