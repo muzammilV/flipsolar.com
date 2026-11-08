@@ -112,6 +112,9 @@
     }
 
     .form-step:last-child { border-right: none; }
+    .form-step:not(.active):not(.done) .fs-num { background: var(--grey-100); color: var(--grey-500); }
+    .form-step.active { background: #fff; color: var(--sky); font-weight: 600; }
+    .form-step.done .fs-num { background: var(--grass); color: #fff; }
 
     .form-step .fs-num {
       width: 20px;
@@ -211,21 +214,6 @@
       <p>Get matched with up to 3 local installers — about 60 seconds, no obligation</p>
     </div>
 
-    <!-- Steps indicator -->
-    <div class="form-steps" aria-hidden="true">
-      <div class="form-step">
-        <span class="fs-num">1</span>
-        <span>Your business</span>
-      </div>
-      <div class="form-step">
-        <span class="fs-num">2</span>
-        <span>Your location</span>
-      </div>
-      <div class="form-step">
-        <span class="fs-num">3</span>
-        <span>Get matched</span>
-      </div>
-    </div>
 
     <!-- Tally embed with loading state -->
     <div class="tally-wrapper">
@@ -247,6 +235,22 @@
       <noscript><p class="form-fallback">JavaScript is needed to show the form here. <a href="https://tally.so/r/68PQWO" target="_blank" rel="noopener">Open the quote form in a new tab</a>.</p></noscript>
     </div>
     <p class="form-fallback">Form not loading? <a href="https://tally.so/r/68PQWO" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+    <script>
+      // Keep the step bar in sync with the embedded Tally form (Tally posts page/submit events to the parent window).
+      window.addEventListener('message', function (e) {
+        if (e.origin !== 'https://tally.so' || typeof e.data !== 'string' || e.data.indexOf('Tally.') < 0) return;
+        var msg; try { msg = JSON.parse(e.data); } catch (_) { return; }
+        var step = null;
+        if (msg.event === 'Tally.FormPageView' && msg.payload) step = Math.min(parseInt(msg.payload.page, 10) || 1, 3);
+        if (msg.event === 'Tally.FormSubmitted') step = 4;
+        if (step === null) return;
+        document.querySelectorAll('.form-step').forEach(function (el) {
+          var n = parseInt(el.getAttribute('data-step'), 10);
+          el.classList.toggle('done', n < step);
+          el.classList.toggle('active', n === step);
+        });
+      });
+    </script>
     <p class="form-consent">By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms</a> and consent to be contacted by FlipSolar and up to 3 installer partners about your request by email or phone.</p>
     <script>
       var d=document,w="https://tally.so/widgets/embed.js",

@@ -98,15 +98,17 @@ nav {
 /* ── HERO ── */
 .hero {
   background: linear-gradient(160deg, var(--sky) 0%, var(--sky-mid) 60%, #1e4a73 100%);
-  min-height: 88vh;
+  min-height: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
   gap: 60px;
-  padding: 80px 5% 80px;
+  padding: 56px 5% 72px;
   position: relative;
   overflow: hidden;
+  overflow: clip;
 }
+.hero-content { position: sticky; top: 100px; padding-top: 24px; }
 
 .hero::before {
   content: '';
@@ -251,7 +253,7 @@ nav {
 }
 
 /* ── SECTION SHARED ── */
-section { padding: 80px 5%; }
+section { padding: 64px 5%; }
 
 .section-label {
   font-size: 13px;
@@ -569,7 +571,7 @@ section { padding: 80px 5%; }
 .cta-section {
   background: linear-gradient(135deg, var(--sun) 0%, var(--sun-deep) 100%);
   text-align: center;
-  padding: 100px 5%;
+  padding: 72px 5%;
 }
 
 .cta-section h2 {
@@ -860,7 +862,8 @@ footer ul li a:hover { color: var(--sun); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; gap: 40px; min-height: auto; padding: 60px 5%; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; min-height: auto; padding: 48px 5%; }
+  .hero-content { position: static; padding-top: 0; }
   .why-grid { grid-template-columns: 1fr; }
   .biz-grid { grid-template-columns: 1fr 1fr; }
   .steps { grid-template-columns: 1fr; }
@@ -911,3 +914,11 @@ footer ul li strong { color: rgba(255,255,255,0.8); font-weight: 600; }
   .calc-results { grid-template-columns: 1fr; }
   .article-body .calc-box { padding: 24px 18px; }
 }
+
+/* ── Hero layout: top-align so a tall embedded form doesn't leave a gap above the headline ── */
+@media (min-width: 901px) {
+  .hero { align-items: start; min-height: 0; padding-top: 64px; padding-bottom: 64px; overflow: clip; }
+  .hero-content { position: sticky; top: 96px; }
+}
+.form-card { padding: 28px; }
+.form-card-head { margin-bottom: 8px; }
