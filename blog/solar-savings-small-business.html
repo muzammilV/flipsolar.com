@@ -161,7 +161,7 @@
       line-height: 1.5;
     }
     .calc-check { display:flex; gap:10px; align-items:flex-start; font-size:14px; line-height:1.5; cursor:pointer; }
-    .calc-check input { margin-top:3px; }
+    .calc-check input { margin-top:2px; width:20px; height:20px; flex:none; }
     .calc-detail { font-size:13px; opacity:.85; margin:14px 0 0; }
     @media (max-width: 480px) { .calc-results { grid-template-columns: 1fr; } .calc-box { padding: 24px 18px; } }
     .calc-state-btn:focus-visible, .calc-check input:focus-visible, #billSlider:focus-visible { outline:3px solid #F5A623; outline-offset:2px; }
@@ -182,7 +182,7 @@
   </div>
 </nav>
 
-<div class="article-hero">
+<div class="article-hero" role="region" aria-label="Article header">
   <div class="breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a> &rsaquo; <a href="/#blog">Guides</a> &rsaquo; Small Business Solar Savings
   </div>
@@ -337,7 +337,7 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--grey-100);"><span style="color:var(--grey-500)">TX commercial rate</span><strong>8–12¢/kWh</strong></div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--grey-100);"><span style="color:var(--grey-500)">FL commercial rate</span><strong>10–14¢/kWh</strong></div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--grey-100);"><span style="color:var(--grey-500)">Federal Tax Credit</span><strong style="color:var(--grass)">30%</strong></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--grey-100);"><span style="color:var(--grey-500)">Federal Tax Credit</span><strong style="color:var(--grass-text)">30%</strong></div>
         <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;"><span style="color:var(--grey-500)">Est. payback (varies)</span><strong>5–12 years</strong></div>
       </div>
     </div>

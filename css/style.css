@@ -11,7 +11,9 @@
   --off-white: #F7F9FC;
   --grey-100: #EEF2F7;
   --grey-300: #C4CDD8;
-  --grey-500: #7A8899;
+  --grey-500: #5B6B7D;      /* darkened from #7A8899 for WCAG AA text contrast */
+  --sun-text: #9A5400;      /* orange that is readable as text on light backgrounds */
+  --grass-text: #1B6F40;    /* green that is readable as text on light backgrounds */
   --grey-700: #3D4F62;
   --text: #0A2540;
   --radius: 12px;
@@ -260,7 +262,7 @@ section { padding: 64px 5%; }
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--sun-deep);
+  color: var(--sun-text);
   margin-bottom: 12px;
 }
 
@@ -373,7 +375,7 @@ section { padding: 64px 5%; }
   margin-top: 10px;
   font-size: 12px;
   font-weight: 600;
-  color: var(--grass);
+  color: var(--grass-text);
   background: rgba(45,158,95,0.08);
   padding: 3px 10px;
   border-radius: 20px;
@@ -487,7 +489,7 @@ section { padding: 64px 5%; }
 
 .state-fact::before {
   content: '✓';
-  color: var(--grass);
+  color: var(--grass-text);
   font-weight: 700;
 }
 
@@ -653,7 +655,7 @@ section { padding: 64px 5%; }
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--sun-deep);
+  color: var(--sun-text);
   margin-bottom: 8px;
 }
 
@@ -714,7 +716,7 @@ footer {
 
 .footer-desc { font-size: 14px; line-height: 1.7; max-width: 300px; }
 
-footer h4 {
+footer h4, footer h3 {
   font-family: 'Sora', sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -902,7 +904,8 @@ footer ul li strong { color: rgba(255,255,255,0.8); font-weight: 600; }
 .legal-body h2 { font-family: 'Sora', sans-serif; font-size: 20px; margin: 36px 0 10px; }
 .legal-body p, .legal-body li { font-size: 16px; }
 .legal-body ul { padding-left: 22px; }
-.legal-body a { color: var(--sun-deep); }
+.legal-body a:not(.btn-primary) { color: var(--sun-text); }
+.legal-body a.btn-primary { color: var(--white); text-decoration: none; }
 .thanks-steps { counter-reset: s; list-style: none; padding: 0; }
 .thanks-steps li { counter-increment: s; position: relative; padding: 4px 0 18px 52px; }
 .thanks-steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--sun); color: var(--sky); font-weight: 800; display: flex; align-items: center; justify-content: center; }
